@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:c="http://java.sun.com/jsp/jstl/core">
+    <h:head>
+        <title>ahip20_aplikacija_4</title>
+    </h:head>
+    <h:body>
+        <h1>ahip20_aplikacija_4</h1>
+        <h:form rendered="#{index.prikazi==0}" id="obrazac">
+            <h:outputLabel value="Korisnik: " />
+            <br/>
+            <h:inputText id="korisnik" value="#{index.korisnik}" />
+            <br/>
+            <h:outputLabel value="Lozinka: " />
+            <br/>
+            <h:inputSecret id="lozinka" value="#{index.lozinka}" />
+            <br/>
+
+            <h:commandButton value="Prijava" action="#{index.prijava}" >
+                <f:ajax execute="korisnik lozinka" render="@all"/>
+            </h:commandButton>
+
+        </h:form>
+        <p id="obavijest">#{index.porukaPrijave}</p>
+
+        <h:form id="izbornik" rendered="#{index.prikazi==1}">
+            <ul>
+                <li><h:link value="4.2 Popis svih korisnika" outcome="faces/popisKorisnika.xhtml" /></li>
+                <li><h:link value="4.4 Popis dnevnika" outcome="faces/popisDnevnika.xhtml" /></li>
+                <li><h:link value="4.6 Pregled aerodroma" outcome="faces/pregledAerodroma.xhtml" /></li>
+            </ul>
+             <h:commandButton value="Odjavi se" action="#{index.odjava}" >
+                <f:ajax execute="korisnik lozinka" render="@all"/>
+            </h:commandButton>
+        </h:form>
+      
+
+    </h:body>
+</html>

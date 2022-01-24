@@ -1,0 +1,117 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <h1>Popis dnevnika</h1>
+        <p>#{popisDnevnika.podrucje}</p>
+        <h:form id="form">
+            <h:inputText id="filter1" a:placeholder="Od" value="#{popisDnevnika.vrijemeOd}" />
+            <h:inputText id="filter2" a:placeholder="Do" value="#{popisDnevnika.vrijemeDo}" />
+            <h:commandButton class="gumb" onclick="fja2()" value="Filtiraj dnevnik" action="#{popisDnevnika.postaviFilter}" >
+                <f:ajax execute="filter1 filter2" render="tablica"/>
+            </h:commandButton>  
+            <h:dataTable id="tablica" border="1" value="#{popisDnevnika.dnevnik}" var="d">
+                <h:column>    				
+                    <f:facet name = "header">Zahtjev</f:facet>    				
+                        #{d.zahtjev}
+                </h:column>
+
+                <h:column>
+                    <f:facet name = "header">Odgovor</f:facet>
+                        #{d.odgovor}
+                </h:column>   
+                <h:column>
+                    <f:facet name = "header">Vrijeme zahtjeva</f:facet>
+                    #{popisDnevnika.pretvori(d.vrijemeZahtjeva)}
+                </h:column> 
+            </h:dataTable>  
+            <h:commandButton class="gumb2" value="Pocetna" action="#{popisDnevnika.pocetna}" >
+                <f:ajax execute="" render="tablica"/>
+            </h:commandButton>  
+            <h:commandButton class="gumb2" value="Prethodna" action="#{popisDnevnika.prethodna}" >
+                <f:ajax execute="" render="tablica"/>
+            </h:commandButton>  
+            <h:commandButton class="gumb2" value="Sljedeca" action="#{popisDnevnika.sljedeca}" >
+                <f:ajax execute="forma" render="tablica"/>
+            </h:commandButton>  
+            <h:commandButton class="gumb2" value="posljednja" action="#{popisDnevnika.posljednja}" >
+                <f:ajax execute="" render="tablica"/>
+            </h:commandButton>  
+<script type="text/javascript">
+                function fja2() {
+                    var datum1 = document.getElementById('form:filter1');
+                    var vrijednost1 = datum1.value;
+                    if (vrijednost1 === "") {
+                    } else {
+                        var res1 = vrijednost1.match("(0[1-9]|[12][0-9]|3[01]).(0[1-9]|1[012]).([0-9]{4}) ([0-1]?[0-9]|2?[0-3]):([0-5]\\d):([0-5]\\d)");
+                        if (res1 === null) {
+                            obavijesti("Format datuma i vremena 'Od' ne odgovara...", 1800, 0)
+                        }
+                    }
+                    var datum2 = document.getElementById('form:filter2');
+                    var vrijednost2 = datum2.value;
+                    if (vrijednost2 === "") {
+                    } else {
+                        var res2 = vrijednost2.match("(0[1-9]|[12][0-9]|3[01]).(0[1-9]|1[012]).([0-9]{4}) ([0-1]?[0-9]|2?[0-3]):([0-5]\\d):([0-5]\\d)");
+                        if (res2 === null) {
+                            obavijesti("Format datuma i vremena 'Do' ne odgovara...", 1800, 0)
+                        }
+                    }
+                }
+                function obavijesti(msg, duration, boja)
+                {
+                    var el = document.createElement("div");
+                    if (boja === 0) {
+                        el.setAttribute("style", "color:white;position:relative;top:10%;left:0%; \n\
+                                            background-color:#f44336;padding:20px;");
+                        el.innerHTML = "<strong>Greška! </strong>" + msg;
+                    }
+                    if (boja === 1) {
+                        el.setAttribute("style", "color:white;position:relative;top:10%;left:0%; \n\
+                                            background-color:#48b77a;padding:20px;");
+                        el.innerHTML = "<strong>Uspjeh! </strong>" + msg;
+                    }
+
+                    setTimeout(function () {
+                        el.parentNode.removeChild(el);
+                    }, duration);
+                    document.body.appendChild(el);
+                }
+
+            </script>
+        </h:form>
+    </h:body>
+    <style>
+            .gumb {
+                background-color: #04AA6D;
+                color: white;
+                padding: 14px 20px;
+                margin: 8px 30px;
+                border: none;
+                cursor: pointer;
+                width: 200px;
+            }
+            .gumb2 {
+                background-color: #04AA6D;
+                color: white;
+
+                 border: none;
+                cursor: pointer;
+                width: 150px;
+            }
+
+            .gumb:hover {
+                opacity: 0.8;
+            }
+              body{
+                background-color: #d5d5d5;
+            }
+        </style>
+</html>
+

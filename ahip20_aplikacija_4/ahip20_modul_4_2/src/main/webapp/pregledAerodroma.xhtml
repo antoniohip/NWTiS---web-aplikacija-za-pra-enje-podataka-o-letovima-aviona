@@ -1,0 +1,199 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <title>Pregled aerodroma</title>
+    </h:head>
+    <h:body>
+        <h1>Pregled aerodroma</h1>
+        <p>#{pregledAerodroma.podrucje}</p>
+        <h:form id="forma">
+            <p id="greska">#{pregledAerodroma.greska}</p>
+            <br/>            
+            <h:selectOneListbox   id="evidentirani" value="${pregledAerodroma.odabraniAerodrom}" size="5">
+                <f:selectItems  value="#{pregledAerodroma.aerodromi}" var="a"
+                                itemLabel="#{a.icao} - #{a.naziv}" itemValue="#{a.icao}" />
+            </h:selectOneListbox>   
+            <br/>
+            <p>Dohvacanje informacija</p>
+            <h:inputText  id="datumLeta" value="#{pregledAerodroma.datumLeta}" />
+            <h:commandButton class="gumb" onclick="fja1()" value="Dohvati letove" action="#{pregledAerodroma.dohvatiLetove}" >
+                <f:ajax execute="datumLeta evidentirani" render="greska forma"/>
+            </h:commandButton>   
+            <h:commandButton class="gumb" onclick="fja1()" value="Dohvati vrijeme na dan" action="#{pregledAerodroma.dohvatiVrijemeDan}" >
+                <f:ajax execute="datumLeta evidentirani" render="greska forma"/>
+            </h:commandButton>
+            <h:dataTable rendered="#{pregledAerodroma.prikaziLetove==1}" id="tablica" border="1" value="#{pregledAerodroma.letovi}" var="l">
+                <h:column>    				
+                    <f:facet name = "header">icao24</f:facet>    				
+                        #{l.icao24}
+                </h:column>
+
+                <h:column>
+                    <f:facet name = "header">First seen</f:facet>
+                        #{pregledAerodroma.pretvoriSeen(l.firstSeen)}
+                </h:column>
+
+                <h:column>
+                    <f:facet name = "header">Last seen</f:facet>
+                        #{pregledAerodroma.pretvoriSeen(l.lastSeen)}
+                </h:column>
+                <h:column>
+                    <f:facet name = "header">Polazak</f:facet>
+                        #{l.estDepartureAirport}
+                </h:column>
+                <h:column>
+                    <f:facet name = "header">Dolazak</f:facet>
+                        #{l.estArrivalAirport}
+                </h:column>
+                <h:column>
+                    <f:facet name = "header">Oznaka leta</f:facet>
+                        #{l.callsign}
+                </h:column>
+            </h:dataTable>   
+            <h:dataTable rendered="#{pregledAerodroma.prikaziVrijeme==1}" id="tablica2" border="1" value="#{pregledAerodroma.svaVremena}" var="m">
+                <h:column>    				
+                    <f:facet name = "header">Aerodrom</f:facet>    				
+                        #{m.ident}
+                </h:column>
+
+                <h:column>
+                    <f:facet name = "header">Spremljeno</f:facet>
+                        #{pregledAerodroma.pretvori(m.spremljeno)}
+                </h:column>
+
+                <h:column>
+                    <f:facet name = "header">Temperatura (°C)</f:facet>
+                        #{m.temperatura}
+                </h:column>
+                <h:column>
+                    <f:facet name = "header">Vlaga (%)</f:facet>
+                        #{m.vlaga}
+                </h:column>
+                <h:column>
+                    <f:facet name = "header">Tlak (hPa)</f:facet>
+                        #{m.tlak}
+                </h:column>
+                <h:column>
+                    <f:facet name = "header">Brzina vjetra (m/s)</f:facet>
+                        #{m.brzinaVjetra}
+                </h:column>
+                <h:column>
+                    <f:facet name = "header">Smjer vjetra</f:facet>
+                        #{m.smjerVjetra}
+                </h:column>
+            </h:dataTable>      
+            <p>Dohvati najblize vrijeme</p>
+            <h:inputText  id="datumVrijeme" value="#{pregledAerodroma.datumVrijeme}" />
+            <h:commandButton class="gumb" onclick="fja2()" value="Dohvati najblize vrijeme" action="#{pregledAerodroma.dohvatiVrijeme}" >
+                <f:ajax execute="datumVrijeme evidentirani" render="greska forma"/>
+            </h:commandButton>   
+            <h:dataTable rendered="#{pregledAerodroma.prikaziNajblizeVrijeme==1}" id="tablica3" border="1" value="#{pregledAerodroma.najblizeVrijeme}" var="m">
+                <h:column>    				
+                    <f:facet name = "header">Aerodrom</f:facet>    				
+                        #{m.ident}
+                </h:column>
+
+                <h:column>
+                    <f:facet name = "header">Spremljeno</f:facet>
+                        #{pregledAerodroma.pretvori(m.spremljeno)}
+                </h:column>
+
+                <h:column>
+                    <f:facet name = "header">Temperatura (°C)</f:facet>
+                        #{m.temperatura}
+                </h:column>
+                <h:column>
+                    <f:facet name = "header">Vlaga (%)</f:facet>
+                        #{m.vlaga}
+                </h:column>
+                <h:column>
+                    <f:facet name = "header">Tlak (hPa)</f:facet>
+                        #{m.tlak}
+                </h:column>
+                <h:column>
+                    <f:facet name = "header">Brzina vjetra (m/s)</f:facet>
+                        #{m.brzinaVjetra}
+                </h:column>
+                <h:column>
+                    <f:facet name = "header">Smjer vjetra</f:facet>
+                        #{m.smjerVjetra}
+                </h:column>
+            </h:dataTable>      
+            <script type="text/javascript">
+                function fja1() {
+                    var elem = document.getElementById('forma:evidentirani');
+                    if (elem.value === '') {
+                        obavijesti("Nije odabran aerodrom!", 1500, 0)
+                    }
+                    var datum1 = document.getElementById('forma:datumLeta');
+                    var vrijednost1 = datum1.value;
+                    if (vrijednost1 === "") {
+                    } else {
+                        var res1 = vrijednost1.match("(0[1-9]|[12][0-9]|3[01]).(0[1-9]|1[012]).([0-9]{4})");
+                        if (res1 === null) {
+                            obavijesti("Format datuma ne odgovara...", 1800, 0)
+                        }
+                    }
+                }function fja2() {
+                    var elem = document.getElementById('forma:evidentirani');
+                    if (elem.value === '') {
+                        obavijesti("Nije odabran aerodrom!", 1500, 0)
+                    }
+                    var datum2 = document.getElementById('forma:datumVrijeme');
+                    var vrijednost2 = datum2.value;
+                    if (vrijednost2 === "") {
+                    } else {
+                        var res2 = vrijednost2.match("(0[1-9]|[12][0-9]|3[01]).(0[1-9]|1[012]).([0-9]{4}) ([0-1]?[0-9]|2?[0-3]):([0-5]\\d):([0-5]\\d)");
+                        if (res2 === null) {
+                            obavijesti("Format datuma i vremena ne odgovara...", 1800, 0)
+                        }
+                    }
+                }
+                function obavijesti(msg, duration, boja)
+                {
+                    var el = document.createElement("div");
+                    if (boja === 0) {
+                        el.setAttribute("style", "color:white;position:relative;top:10%;left:0%; \n\
+                                            background-color:#f44336;padding:20px;");
+                        el.innerHTML = "<strong>Greška! </strong>" + msg;
+                    }
+                    if (boja === 1) {
+                        el.setAttribute("style", "color:white;position:relative;top:10%;left:0%; \n\
+                                            background-color:#48b77a;padding:20px;");
+                        el.innerHTML = "<strong>Uspjeh! </strong>" + msg;
+                    }
+
+                    setTimeout(function () {
+                        el.parentNode.removeChild(el);
+                    }, duration);
+                    document.body.appendChild(el);
+                }
+
+            </script>
+
+
+        </h:form>
+    </h:body>
+     <style>
+            .gumb {
+                background-color: #04AA6D;
+                color: white;
+                padding: 14px 20px;
+                margin: 8px 30px;
+                border: none;
+                cursor: pointer;
+                width: 200px;
+            }
+
+            .gumb:hover {
+                opacity: 0.8;
+            }
+              body{
+                background-color: #d5d5d5;
+            }
+        </style>
+
+</html>
