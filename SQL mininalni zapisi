@@ -1,0 +1,21 @@
+SELECT count(distinct ident) from nwtis_ahip20_bp_2.MYAIRPORTS;
+
+SELECT count(distinct flightDate) FROM nwtis_ahip20_bp_2.MYAIRPORTSLOG;
+SELECT distinct flightDate FROM nwtis_ahip20_bp_2.MYAIRPORTSLOG
+
+SELECT count(*)  FROM nwtis_ahip20_bp_2.AIRPLANES
+
+SELECT count(*) from METEO
+select ident, count(*) from METEO group by ident
+SELECT distinct(date(spremljeno)) FROM nwtis_ahip20_bp_2.METEO
+SELECT count(distinct(date(spremljeno))) FROM nwtis_ahip20_bp_2.METEO
+select ident, count(*) from METEO WHERE DATE(spremljeno) = '2021-06-10' group by ident
+select ident, count(*) from METEO WHERE DATE(spremljeno) = '2021-06-11' group by ident
+select ident, count(*) from METEO WHERE DATE(spremljeno) = '2021-06-12' group by ident
+select ident, count(*) from METEO WHERE DATE(spremljeno) = '2021-06-13' group by ident
+select ident, count(*) from METEO WHERE DATE(spremljeno) = '2021-06-14' group by ident
+select ident, count(*) from METEO WHERE DATE(spremljeno) = '2021-06-15' group by ident
+select ident, count(*) from METEO WHERE DATE(spremljeno) = '2021-06-16' group by ident
+select ident, count(*) from METEO WHERE DATE(spremljeno) = '2021-06-17' group by ident
+
+

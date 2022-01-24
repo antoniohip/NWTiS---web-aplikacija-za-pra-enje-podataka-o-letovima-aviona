@@ -1,0 +1,887 @@
+{
+	"info": {
+		"_postman_id": "91fcfe86-eb36-481b-9eed-58c7d376f5b3",
+		"name": "Projekt",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Korisnici 1 /ispisSvihKorsinika",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "korisnik",
+						"type": "text",
+						"value": "ahip20"
+					},
+					{
+						"key": "lozinka",
+						"type": "text",
+						"value": "123456"
+					},
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8084/ahip20_aplikacija_2/rest/korisnici",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8084",
+					"path": [
+						"ahip20_aplikacija_2",
+						"rest",
+						"korisnici"
+					],
+					"query": [
+						{
+							"key": "država",
+							"value": "CA",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Korisnici 2 /dodavanjeKorisnika",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "korisnik",
+						"type": "text",
+						"value": ""
+					},
+					{
+						"key": "lozinka",
+						"type": "text",
+						"value": ""
+					},
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"korisnik\": \"novi\",\r\n\"lozinka\": \"lotinka\",\r\n\"prezime\": \"jiji\",\r\n\"ime\": \"mario\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8084/ahip20_aplikacija_2/rest/korisnici",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8084",
+					"path": [
+						"ahip20_aplikacija_2",
+						"rest",
+						"korisnici"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Korisnici 3 /ispisKorisnika {korisnik}",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "korisnik",
+						"value": "ahip20",
+						"type": "text"
+					},
+					{
+						"key": "lozinka",
+						"value": "123456",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8084/ahip20_aplikacija_2/rest/korisnici/iva",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8084",
+					"path": [
+						"ahip20_aplikacija_2",
+						"rest",
+						"korisnici",
+						"iva"
+					],
+					"query": [
+						{
+							"key": "država",
+							"value": "CA",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Aerodromi 1/ispisKolekcijeAerodroma",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "korisnik",
+						"type": "text",
+						"value": "ahip20"
+					},
+					{
+						"key": "lozinka",
+						"type": "text",
+						"value": "123456"
+					},
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8084/ahip20_aplikacija_2/rest/aerodromi?naziv=Zag",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8084",
+					"path": [
+						"ahip20_aplikacija_2",
+						"rest",
+						"aerodromi"
+					],
+					"query": [
+						{
+							"key": "naziv",
+							"value": "Zag"
+						},
+						{
+							"key": "drzava",
+							"value": "CA",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Aerodromi 2 /ispisAerdorma {icao}",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "korisnik",
+						"type": "text",
+						"value": "ahip20"
+					},
+					{
+						"key": "lozinka",
+						"type": "text",
+						"value": "123456"
+					},
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8084/ahip20_aplikacija_2/rest/aerodromi/LDZA",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8084",
+					"path": [
+						"ahip20_aplikacija_2",
+						"rest",
+						"aerodromi",
+						"LDZA"
+					],
+					"query": [
+						{
+							"key": "naziv",
+							"value": "",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Aerodromi 3 /brojLetova {icao}/letovi",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "korisnik",
+						"type": "text",
+						"value": "ahip20"
+					},
+					{
+						"key": "lozinka",
+						"type": "text",
+						"value": "123456"
+					},
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8084/ahip20_aplikacija_2/rest/aerodromi/LDZA/letovi",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8084",
+					"path": [
+						"ahip20_aplikacija_2",
+						"rest",
+						"aerodromi",
+						"LDZA",
+						"letovi"
+					],
+					"query": [
+						{
+							"key": "naziv",
+							"value": "",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Aerodromi 4 /Letovi {icao}/letovi/{dan}",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "korisnik",
+						"value": "ahip20",
+						"type": "text"
+					},
+					{
+						"key": "lozinka",
+						"value": "123456",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8084/ahip20_aplikacija_2/rest/aerodromi/LDZA/letovi/2021-02-12",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8084",
+					"path": [
+						"ahip20_aplikacija_2",
+						"rest",
+						"aerodromi",
+						"LDZA",
+						"letovi",
+						"2021-02-12"
+					],
+					"query": [
+						{
+							"key": "naziv",
+							"value": "",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Aerodromi 5 /kolekcijaVremenaZaDan {icao}/meteoDan{dan}",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "korisnik",
+						"value": "ivo",
+						"type": "text"
+					},
+					{
+						"key": "lozinka",
+						"value": "123456",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8084/ahip20_aplikacija_2/rest/aerodromi/LDZA/meteoDan/2021-06-15",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8084",
+					"path": [
+						"ahip20_aplikacija_2",
+						"rest",
+						"aerodromi",
+						"LDZA",
+						"meteoDan",
+						"2021-06-15"
+					],
+					"query": [
+						{
+							"key": "icao",
+							"value": "LOWW",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Aerodromi 6 /odredenoVrijeme {icao}/meteoVrijeme{vrijeme}",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "korisnik",
+						"value": "ivo",
+						"type": "text"
+					},
+					{
+						"key": "lozinka",
+						"value": "123456",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8084/ahip20_aplikacija_2/rest/aerodromi/LDZA/meteoVrijeme/1623676515000",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8084",
+					"path": [
+						"ahip20_aplikacija_2",
+						"rest",
+						"aerodromi",
+						"LDZA",
+						"meteoVrijeme",
+						"1623676515000"
+					],
+					"query": [
+						{
+							"key": "icao",
+							"value": "LOWW",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Moji aerodromi 1/popisAerodromaKojiSePrate",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "korisnik",
+						"type": "text",
+						"value": "ahip20"
+					},
+					{
+						"key": "lozinka",
+						"type": "text",
+						"value": "123456"
+					},
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8084/ahip20_aplikacija_2/rest/mojiAerodromi",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8084",
+					"path": [
+						"ahip20_aplikacija_2",
+						"rest",
+						"mojiAerodromi"
+					],
+					"query": [
+						{
+							"key": "naziv",
+							"value": "",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Moji aerodromi 2 /KolekcijaKorisnikaKojiPrate {icao}",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "korisnik",
+						"value": "ahip20",
+						"type": "text"
+					},
+					{
+						"key": "lozinka",
+						"value": "123456",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8084/ahip20_aplikacija_2/rest/mojiAerodromi/LDZA/prate",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8084",
+					"path": [
+						"ahip20_aplikacija_2",
+						"rest",
+						"mojiAerodromi",
+						"LDZA",
+						"prate"
+					],
+					"query": [
+						{
+							"key": "naziv",
+							"value": "",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Moji aerodromi 3 /kolekcijaAerodromaKojePratiKorisnik {korsinik}/prati",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "korisnik",
+						"type": "text",
+						"value": "ivo"
+					},
+					{
+						"key": "lozinka",
+						"type": "text",
+						"value": "123456"
+					},
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8084/ahip20_aplikacija_2/rest/mojiAerodromi/ahip20/prati",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8084",
+					"path": [
+						"ahip20_aplikacija_2",
+						"rest",
+						"mojiAerodromi",
+						"ahip20",
+						"prati"
+					],
+					"query": [
+						{
+							"key": "naziv",
+							"value": "",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Moji aerodromi 4 /dodavanjeAerodroma {korisnik}/prati",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "korisnik",
+						"value": "ivo",
+						"type": "text"
+					},
+					{
+						"key": "lozinka",
+						"value": "123456",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8084/ahip20_aplikacija_2/rest/mojiAerodromi/ahip20/prati?icao=LOWW",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8084",
+					"path": [
+						"ahip20_aplikacija_2",
+						"rest",
+						"mojiAerodromi",
+						"ahip20",
+						"prati"
+					],
+					"query": [
+						{
+							"key": "icao",
+							"value": "LOWW"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Moji aerodromi 5/briseKorsinikuAerodrom {korisnik}/prati/{icao}",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "korisnik",
+						"type": "text",
+						"value": "ivo"
+					},
+					{
+						"key": "lozinka",
+						"type": "text",
+						"value": "123456"
+					},
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8084/ahip20_aplikacija_2/rest/mojiAerodromi/ahip20/prati/LDZA",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8084",
+					"path": [
+						"ahip20_aplikacija_2",
+						"rest",
+						"mojiAerodromi",
+						"ahip20",
+						"prati",
+						"LDZA"
+					],
+					"query": [
+						{
+							"key": "icao",
+							"value": "LOWW",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Dnevnik 1 /dodavanjeZapisaDnevnika",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "korisnik",
+						"value": "",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "lozinka",
+						"value": "",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"korisnik\": \"ahip20\",\r\n\"zahtjev\": \"AUTHEN ahip20 123456\",\r\n\"odgovor\": \"OK\",\r\n\"vrijemeZahtjeva\": \"1623598305599\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8084/ahip20_aplikacija_2/rest/dnevnik",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8084",
+					"path": [
+						"ahip20_aplikacija_2",
+						"rest",
+						"dnevnik"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Dnevnik 2 /kolekcijaZapisa dnevnik/{korsinik}",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				},
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "korisnik",
+						"value": "ahip20",
+						"type": "text"
+					},
+					{
+						"key": "lozinka",
+						"value": "123456",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8084/ahip20_aplikacija_2/rest/dnevnik/ahip20?pomak=0&stranica=2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8084",
+					"path": [
+						"ahip20_aplikacija_2",
+						"rest",
+						"dnevnik",
+						"ahip20"
+					],
+					"query": [
+						{
+							"key": "odVrijeme",
+							"value": "1623708000000",
+							"disabled": true
+						},
+						{
+							"key": "doVrijeme",
+							"value": "1723614696201",
+							"disabled": true
+						},
+						{
+							"key": "pomak",
+							"value": "0"
+						},
+						{
+							"key": "stranica",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Dnevnik 3 /broj zapisa {korisnik}/broj",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				},
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "korisnik",
+						"value": "ahip20",
+						"type": "text"
+					},
+					{
+						"key": "lozinka",
+						"value": "123456",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8084/ahip20_aplikacija_2/rest/dnevnik/ahip20/broj?odVrijeme=1623598206000&doVrijeme=1723698306000",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8084",
+					"path": [
+						"ahip20_aplikacija_2",
+						"rest",
+						"dnevnik",
+						"ahip20",
+						"broj"
+					],
+					"query": [
+						{
+							"key": "odVrijeme",
+							"value": "1623598206000"
+						},
+						{
+							"key": "doVrijeme",
+							"value": "1723698306000"
+						},
+						{
+							"key": "pomak",
+							"value": "5",
+							"disabled": true
+						},
+						{
+							"key": "stranica",
+							"value": "5",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
